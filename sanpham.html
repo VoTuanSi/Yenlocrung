@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu - Yến Lộc Rừng</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">YẾN LỘC RỪNG</div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="gioithieu.html">Giới thiệu</a></li>
+                    <li><a href="sanpham.html" class="active">Sản phẩm</a></li>
+                    <li><a href="chungnhanphaply.html">Chứng nhận & Pháp lý</a></li>
+                    <li><a href="lienhe.html">Liên hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- ... header giống các trang khác ... -->
+<div class="container">
+    <h1 class="page-title">Sản phẩm</h1>
+
+    <div class="category-filter">
+        <button class="filter-btn active" onclick="filterProducts('all')">Tất cả sản phẩm</button>
+        <button class="filter-btn" onclick="filterProducts('nutritional')">Bột dinh dưỡng & Thảo mộc</button>
+        <button class="filter-btn" onclick="filterProducts('care')">Chăm sóc tóc & Cơ thể</button>
+        <button class="filter-btn" onclick="filterProducts('herbal')">Thảo mộc truyền thống</button>
+    </div>
+
+    <div id="product-grid" class="grid">
+        <!-- Sản phẩm sẽ được load từ JavaScript -->
+    </div>
+</div>
+<!-- footer -->
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Yến Lộc Rừng. Tất cả quyền được bảo lưu.</p>
+    </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="main.js"></script>
+<script>
+    // Hiển thị sản phẩm khi trang load
+    document.addEventListener('DOMContentLoaded', displayProducts);
+</script>
+</body>
+</html>
