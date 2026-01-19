@@ -13,10 +13,31 @@
     color: white;
 }
 
+/* Hero dạng banner ảnh (trang chủ) */
+.hero--banner {
+    height: auto;
+    min-height: 0;
+    padding: 0;
+    display: block;
+    background-image: none;
+    color: inherit;
+}
+
+.hero--banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+    vertical-align: middle;
+}
+
 @media (max-width: 768px) {
     .hero {
         height: 75vh;
         min-height: 500px;
+    }
+    .hero--banner {
+        height: auto;
+        min-height: 0;
     }
 }
 
@@ -25,9 +46,13 @@
         height: 60vh;
         min-height: 400px;
     }
+    .hero--banner {
+        height: auto;
+        min-height: 0;
+    }
 }
 
-.hero::before {
+.hero:not(.hero--banner)::before {
     content: "";
     position: absolute;
     inset: 0;

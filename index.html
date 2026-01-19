@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/certifications.css">
     <link rel="stylesheet" href="css/featured.css">
     <link rel="stylesheet" href="css/commitments.css">
+    <link rel="stylesheet" href="css/home-extras.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -31,13 +32,9 @@
         </div>
     </header>
 
-    <!-- Hero Banner -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>YẾN LỘC RỪNG</h1>
-            <p>Chăm sóc sức khỏe từ sản phẩm thiên nhiên</p>
-            <a href="https://zalo.me/0979502951" class="btn-primary">Liên hệ tư vấn</a>
-        </div>
+    <!-- Hero: Banner Yến Lộc Rừng (sản phẩm, QR, Hotline) -->
+    <section class="hero hero--banner">
+        <img src="images/suongsambanner.png" alt="Yến Lộc Rừng - THANH SƠN NGÀY MỚI, sản phẩm chủ lực, quét QR hoặc Hotline 0979 502 951 – 0386 794 386">
     </section>
 
     <!-- Intro / About -->
@@ -55,7 +52,21 @@
         </div>
     </section>
 
-    <!-- Featured Products - Bestsellers -->
+    <!-- Gian hàng Yến Lộc Rừng (ảnh đại diện tại sự kiện) -->
+    <section class="booth-section">
+        <div class="container">
+            <p class="booth-tag">Tại sự kiện</p>
+            <h2>Yến Lộc Rừng</h2>
+            <div class="booth-image-wrap">
+                <div class="booth-image-inner">
+                    <img src="images/trangchu.jpg" alt="Chị Yến và gian hàng Yến Lộc Rừng tại sự kiện trưng bày sản phẩm và chứng nhận OCOP">
+                    <div class="booth-image-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products - Bestsellers -->    
     <section class="featured-products">
         <div class="container">
             <h2>Nhóm sản phẩm chủ lực</h2>
@@ -89,6 +100,51 @@
         </div>
     </section>
 
+    <!-- 8 ảnh Chị Yến -->
+    <section class="chi-yen-gallery">
+        <div class="container">
+            <h2>KHOẢNH KHẮC </h2>
+            <div class="chi-yen-grid">
+                <div class="chi-yen-item"><img src="images/chiyen1.jpg" alt="Chị Yến - Yến Lộc Rừng 1"></div>
+                <div class="chi-yen-item"><img src="images/chiyen2.jpg" alt="Chị Yến - Yến Lộc Rừng 2"></div>
+                <div class="chi-yen-item"><img src="images/chiyen3.jpg" alt="Chị Yến - Yến Lộc Rừng 3"></div>
+                <div class="chi-yen-item"><img src="images/chiyen4.jpg" alt="Chị Yến - Yến Lộc Rừng 4"></div>
+                <div class="chi-yen-item"><img src="images/chiyen5.jpg" alt="Chị Yến - Yến Lộc Rừng 5"></div>
+                <div class="chi-yen-item"><img src="images/chiyen6.jpg" alt="Chị Yến - Yến Lộc Rừng 6"></div>
+                <div class="chi-yen-item"><img src="images/sk1.jpeg" alt="Chị Yến tham gia hội nghị 1"></div>
+                <div class="chi-yen-item"><img src="images/sk2.jpg" alt="Chị Yến tham gia hội nghị 2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4 Chứng nhận tiêu biểu -->
+    <section class="home-certs">
+        <div class="container">
+            <h2>Chứng nhận tiêu biểu</h2>
+            <div class="home-cert-grid">
+                <div class="home-cert-item">
+                    <div class="img-wrap"><img src="images/giaybotsuongsam.jpg" alt="Chứng nhận OCOP 3 sao - Bột sương sâm"></div>
+                    <p>Chứng nhận OCOP 3 sao (Bột sương sâm)</p>
+                </div>
+                <div class="home-cert-item">
+                    <div class="img-wrap"><img src="images/antoanthucpham.jpg" alt="Giấy chứng nhận cơ sở đủ điều kiện ATTP"></div>
+                    <p>Giấy chứng nhận cơ sở đủ điều kiện ATTP</p>
+                </div>
+                <div class="home-cert-item">
+                    <div class="img-wrap"><img src="images/hokinhdoanh.png" alt="Chứng nhận quyền sử dụng mã số mã vạch"></div>
+                    <p>Giấy chứng nhận quyền sử dụng mã số mã vạch</p>
+                </div>
+                <div class="home-cert-item">
+                    <div class="img-wrap"><img src="images/sohuutritue.jpg" alt="Chấp nhận đơn Nhãn hiệu - Cục Sở hữu trí tuệ"></div>
+                    <p>Quyết định chấp nhận đơn Nhãn hiệu (Sở hữu trí tuệ)</p>
+                </div>
+            </div>
+            <div class="home-certs-more">
+                <a href="chungnhanphaply.html">Xem tất cả chứng nhận & pháp lý</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Commitments -->
     <section class="commitments">
         <div class="container">
@@ -109,14 +165,34 @@
             </div>
         </div>
     </section>
-
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>© 2024 Yến Lộc Rừng. Tất cả quyền được bảo lưu.</p>
+<footer class="main-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-info">
+                <div class="footer-logo">YẾN LỘC RỪNG</div>
+                <ul class="contact-list">
+                    <li><strong>Địa chỉ:</strong> Tổ 7A, ấp 6, Thanh Sơn, Định Quán, Đồng Nai</li>
+                    <li><strong>Hotline:</strong> <a href="tel:0979502951">0979 502 951</a> – <a href="tel:0386794386">0386 794 386</a></li>
+                    <li><strong>Zalo:</strong> <a href="https://zalo.me/0979502951" target="_blank">0979 502 951</a></li>
+                    <li><strong>Facebook:</strong> <a href="https://www.facebook.com/YenLocRung?mibextid=wwXIfr&rdid=wfUS61O6lzcpKZty&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1EtcfebfgA%2F%3Fmibextid%3DwwXIfr#" target="_blank">Yến Lộc Rừng</a></li>
+                </ul>
+            </div>
+            <div class="footer-products">
+                <h3 class="footer-heading">Sản phẩm tiêu biểu</h3>
+                <ul>
+                    <li><a href="sanpham.html">Bột đậu ngũ hành</a></li>
+                    <li><a href="sanpham.html">Bột sương sâm Lamoi-Pro</a></li>
+                    <li><a href="sanpham.html">Hà thủ ô đỏ</a></li>
+                    <li><a href="sanpham.html">Dầu gội Hương Rừng</a></li>
+                </ul>
+            </div>
         </div>
-    </footer>
 
-    <script src="main.js"></script> <!-- Nếu bạn có JS riêng -->
+    </div>
+</footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

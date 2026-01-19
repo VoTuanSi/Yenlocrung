@@ -1,0 +1,313 @@
+/* ==================== TRANG CHỦ: GIAN HÀNG + GALLERY CHỊ YẾN + 4 CHỨNG NHẬN ==================== */
+
+/* --- 1. Gian hàng Yến Lộc Rừng – nền choáy, nổi bật --- */
+.booth-section {
+    padding: 80px 0 90px;
+    background:
+        /* Vệt sáng chéo nhẹ (ánh lên) */
+        linear-gradient(118deg, transparent 20%, rgba(255, 255, 252, 0.42) 42%, transparent 65%),
+        /* Glow xanh phía trên */
+        radial-gradient(ellipse 95% 55% at 50% -8%, rgba(45, 90, 39, 0.12) 0%, transparent 52%),
+        /* Glow vàng goc phải dưới */
+        radial-gradient(ellipse 65% 50% at 105% 105%, rgba(220, 175, 130, 0.14) 0%, transparent 50%),
+        /* Glow mint góc trái trên */
+        radial-gradient(ellipse 55% 45% at -5% 15%, rgba(185, 215, 175, 0.16) 0%, transparent 55%),
+        /* Nền nổi */
+        linear-gradient(180deg, #fdfbf7 0%, rgba(238, 245, 232, 0.7) 45%, rgba(252, 248, 240, 0.6) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ô sáng góc trái – tâm sáng, viền xanh mờ */
+.booth-section::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 3%;
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(200, 225, 195, 0.2) 22%,
+        rgba(45, 90, 39, 0.08) 45%,
+        transparent 72%
+    );
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(1px);
+}
+
+/* Ô sáng góc phải – tâm vàng ấm, viền mật ong */
+.booth-section::after {
+    content: '';
+    position: absolute;
+    bottom: 35px;
+    right: 2%;
+    width: 160px;
+    height: 160px;
+    background: radial-gradient(
+        circle,
+        rgba(255, 250, 238, 0.65) 0%,
+        rgba(230, 200, 160, 0.2) 25%,
+        rgba(212, 163, 115, 0.1) 50%,
+        transparent 72%
+    );
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(1px);
+}
+
+.booth-section .container {
+    text-align: center;
+}
+
+.booth-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    background: rgba(45, 90, 39, 0.1);
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 14px;
+}
+
+.booth-section h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 36px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.booth-image-wrap {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 
+        0 4px 6px rgba(0,0,0,0.04),
+        0 20px 50px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(45, 90, 39, 0.08);
+    transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.booth-image-wrap:hover {
+    box-shadow: 
+        0 8px 16px rgba(0,0,0,0.06),
+        0 30px 70px rgba(45, 90, 39, 0.12),
+        0 0 0 1px rgba(45, 90, 39, 0.12);
+    transform: translateY(-4px);
+}
+
+.booth-image-inner {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+}
+
+.booth-image-inner img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+    /* Chỉnh ảnh đẹp hơn: tăng tương phản & độ bão hòa nhẹ, giảm ánh đèn flash */
+    filter: contrast(1.07) saturate(1.1) brightness(1.02);
+    transition: filter 0.4s ease;
+}
+
+.booth-image-wrap:hover .booth-image-inner img {
+    filter: contrast(1.1) saturate(1.14) brightness(1.02);
+}
+
+.booth-image-overlay {
+    position: absolute;
+    inset: 0;
+    /* Gradient dưới + vignette viền + lớp ấm nhẹ giảm ánh flash lạnh */
+    background: 
+        linear-gradient(to bottom, rgba(255,248,240,0.04) 0%, transparent 35%),
+        linear-gradient(to top, rgba(0,0,0,0.18) 0%, transparent 50%),
+        radial-gradient(ellipse 88% 80% at 50% 50%, transparent 50%, rgba(0,0,0,0.1) 100%);
+    pointer-events: none;
+}
+
+.booth-image-wrap .booth-caption {
+    text-align: center;
+    margin: 0;
+    margin-top: 18px;
+    padding: 0 8px;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .booth-section { padding: 56px 0 64px; }
+    .booth-section::before, .booth-section::after { display: none; }
+    .booth-tag { font-size: 0.7rem; letter-spacing: 2px; padding: 5px 12px; margin-bottom: 10px; }
+    .booth-section h2 { font-size: 1.5rem; margin-bottom: 24px; }
+    .booth-image-wrap { max-width: 100%; padding: 8px; border-radius: 16px; }
+    .booth-image-inner { aspect-ratio: 4 / 3; border-radius: 12px; }
+    .booth-image-wrap .booth-caption { margin-top: 14px; font-size: 0.9rem; }
+}
+
+/* --- 2. Gallery 8 ảnh Chị Yến --- */
+.chi-yen-gallery {
+    padding: 80px 0 90px;
+    background: #fff;
+}
+
+.chi-yen-gallery h2 {
+    font-size: 1.9rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.chi-yen-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.chi-yen-item {
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chi-yen-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(45, 90, 39, 0.15);
+}
+
+.chi-yen-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 992px) {
+    .chi-yen-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; }
+}
+
+@media (max-width: 768px) {
+    .chi-yen-gallery { padding: 60px 0 70px; }
+    .chi-yen-gallery h2 { font-size: 1.5rem; margin-bottom: 28px; }
+    .chi-yen-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+}
+
+@media (max-width: 560px) {
+    .chi-yen-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}
+
+/* --- 3. 4 Chứng nhận tiêu biểu (trang chủ) --- */
+.home-certs {
+    padding: 70px 0 80px;
+    background: linear-gradient(135deg, rgba(232, 240, 228, 0.4) 0%, #fdfbf7 100%);
+}
+
+.home-certs h2 {
+    font-size: 1.9rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.home-cert-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto 32px;
+}
+
+.home-cert-item {
+    background: #fff;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    border: 1px solid rgba(232, 240, 228, 0.8);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-cert-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 36px rgba(45, 90, 39, 0.12);
+}
+
+.home-cert-item .img-wrap {
+    height: 180px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #f9f9f9;
+    margin-bottom: 12px;
+}
+
+.home-cert-item .img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 8px;
+}
+
+.home-cert-item p {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    line-height: 1.35;
+    margin: 0;
+}
+
+.home-certs-more {
+    text-align: center;
+}
+
+.home-certs-more a {
+    display: inline-block;
+    padding: 12px 28px;
+    background: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.home-certs-more a:hover {
+    background: #1f3f1b;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 992px) {
+    .home-cert-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+}
+
+@media (max-width: 768px) {
+    .home-certs { padding: 50px 0 60px; }
+    .home-certs h2 { font-size: 1.5rem; margin-bottom: 28px; }
+    .home-cert-grid { gap: 16px; margin-bottom: 24px; }
+    .home-cert-item .img-wrap { height: 160px; }
+}
+
+@media (max-width: 480px) {
+    .home-cert-grid { grid-template-columns: 1fr; }
+    .home-cert-item .img-wrap { height: 220px; }
+}

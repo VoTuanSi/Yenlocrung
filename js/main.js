@@ -1,4 +1,5 @@
 let currentFilter = 'all';
+let products = [];
 
 function showSection(sectionId) {
     // Ẩn tất cả các page
@@ -37,38 +38,45 @@ function filterCategory(category) {
 
 function filterProducts(category) {
     currentFilter = category;
-    
-    // Cập nhật active button
-    const buttons = document.querySelectorAll('.filter-btn');
-    buttons.forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-    
+    var btns = document.querySelectorAll('.filter-btn');
+    btns.forEach(function (b) { b.classList.remove('active'); });
+    var activeBtn = document.querySelector('.filter-btn[data-filter="' + category + '"]');
+    if (activeBtn) activeBtn.classList.add('active');
+    var container = document.getElementById('product-container');
+    var cards = container ? container.querySelectorAll('.product-card') : [];
+    if (cards.length) {
+        var visible = 0;
+        cards.forEach(function (c) {
+            var cat = (c.getAttribute('data-category') || 'nutritional');
+            var show = (category === 'all' || cat === category);
+            c.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        var emptyEl = document.getElementById('product-empty-state');
+        if (emptyEl) emptyEl.style.display = (visible === 0) ? 'flex' : 'none';
+        return;
+    }
     displayProducts();
 }
 
 function displayProducts() {
-    const productGrid = document.getElementById('product-grid');
+    var productGrid = document.getElementById('product-grid');
     if (!productGrid) return;
-    
-    const filtered = currentFilter === 'all' 
-        ? products 
-        : products.filter(p => p.category === currentFilter);
-    
-    productGrid.innerHTML = filtered.map(product => `
-        <div class="product-card">
-            <div class="product-image-wrapper">
-                <img src="${product.img}" alt="${product.name}">
-            </div>
-            <h3>${product.name}</h3>
-            <p class="product-desc">${product.desc}</p>
-            <p class="price">${product.price}</p>
-            <a href="https://zalo.me/0979502951" class="btn btn-primary">Đặt hàng ngay</a>
-        </div>
-    `).join('');
+    var list = products || [];
+    var filtered = currentFilter === 'all' ? list : list.filter(function (p) { return p && p.category === currentFilter; });
+    productGrid.innerHTML = filtered.map(function (product) {
+        return '<div class="product-card"><div class="product-image-wrapper"><img src="' + (product.img || '') + '" alt="' + (product.name || '') + '"></div><h3>' + (product.name || '') + '</h3><p class="product-desc">' + (product.desc || '') + '</p><p class="price">' + (product.price || '') + '</p><a href="https://zalo.me/0979502951" class="btn">ĐẶT HÀNG NGAY</a></div>';
+    }).join('');
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Hiển thị trang chủ mặc định
-    showSection('home');
-    displayProducts();
+    var grid = document.getElementById('product-grid');
+    if (grid && typeof loadProducts === 'function') {
+        loadProducts()
+            .then(function (p) { products = p; displayProducts(); })
+            .catch(function (e) { console.error('Lỗi load sản phẩm:', e); displayProducts(); });
+    } else {
+        if (document.getElementById('home')) showSection('home');
+        displayProducts();
+    }
 });
