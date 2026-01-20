@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbydenCDd3TlvqKP3GXzlPl9Lqs-l6zWhOyMmX1c7jl-a3_EwmoOn8AVg29N6rXHAAiK/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzgN16Cmp2rABamF9xaFBCP6R75Orum6vRIL8Ze_0DZDIGtFAZxnB9ffhIN9Tk8pse7/exec";
 
 function mapCategory(cat) {
     if (!cat || typeof cat !== "string") return "nutritional";

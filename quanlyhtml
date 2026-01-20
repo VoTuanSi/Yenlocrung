@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Yến Lộc Rừng</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #2d5a27; --accent: #e67e22; }
+        body { font-family: 'Quicksand', sans-serif; background-color: #f9fbf8; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; min-height: 100vh; margin: 0; }
+        
+        /* Style cho Form Đăng Nhập */
+        #loginSection { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 350px; text-align: center; margin-top: 10vh; }
+        #loginSection h2 { color: var(--primary); margin-bottom: 25px; }
+        
+        /* Style cho Trang Admin (Ẩn mặc định) */
+        #adminContent { display: none; width: 100%; max-width: 500px; }
+        .admin-card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(45, 90, 39, 0.1); width: 100%; }
+        
+        /* Thành phần chung */
+        h2 { color: var(--primary); text-align: center; margin-bottom: 25px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #555; }
+        input, textarea, select { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; font-family: inherit; }
+        
+        .btn-main { width: 100%; padding: 15px; background: var(--primary); color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1rem; transition: 0.3s; }
+        .btn-main:hover { background: #1e3d1a; transform: translateY(-2px); }
+        
+        .logout-btn { background: #888; margin-top: 20px; padding: 10px; font-size: 0.8rem; }
+        #status { text-align: center; margin-top: 15px; font-weight: bold; }
+        .error { color: red; font-size: 0.9rem; margin-top: -10px; margin-bottom: 15px; display: none; }
+    </style>
+</head>
+<body>
+
+    <div id="loginSection">
+        <h2>Quản Trị Viên</h2>
+        <input type="password" id="adminPass" placeholder="Nhập mật khẩu quản trị">
+        <div id="loginError" class="error">Mật khẩu không chính xác!</div>
+        <button class="btn-main" onclick="checkLogin()">Đăng Nhập</button>
+    </div>
+
+    <div id="adminContent">
+        <div class="admin-card">
+            <h2>Thêm Sản Phẩm Mới</h2>
+            <form id="adminForm">
+                <label>ID Sản phẩm</label>
+                <input type="number" id="id" placeholder="Ví dụ: 9" required>
+
+                <label>Tên sản phẩm</label>
+                <input type="text" id="name" placeholder="Ví dụ: Bột đậu ngũ hành" required>
+
+                <label>Giá niêm yết</label>
+                <input type="text" id="price" placeholder="Ví dụ: 150.000đ" required>
+
+                <label>Danh mục</label>
+                <select id="category">
+                    <option value="Dinh dưỡng">Bột dinh dưỡng & Thảo mộc</option>
+                    <option value="Chăm sóc">Chăm sóc tóc & Cơ thể</option>
+                    <option value="Truyền thống">Thảo mộc truyền thống</option>
+                </select>
+
+                <label>Link ảnh (Google Drive)</label>
+                <input type="text" id="img" placeholder="Dán link chia sẻ ảnh tại đây" required>
+
+                <label>Mô tả ngắn</label>
+                <textarea id="desc" rows="3" placeholder="Nhập mô tả sản phẩm..."></textarea>
+
+                <button type="submit" id="submitBtn" class="btn-main">Lưu Vào Cửa Hàng</button>
+            </form>
+            <div id="status"></div>
+            
+            <button class="btn-main logout-btn" onclick="logout()">Đăng xuất</button>
+        </div>
+    </div>
+
+    <script>
+        const CORRECT_PASSWORD = "yenlocrung2026"; // Bạn có thể thay đổi mật khẩu tại đây
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzgN16Cmp2rABamF9xaFBCP6R75Orum6vRIL8Ze_0DZDIGtFAZxnB9ffhIN9Tk8pse7/exec";
+
+        // 1. Xử lý Đăng nhập
+        function checkLogin() {
+            const pass = document.getElementById('adminPass').value;
+            if (pass === CORRECT_PASSWORD) {
+                sessionStorage.setItem("isLoggedIn", "true");
+                showAdmin();
+            } else {
+                document.getElementById('loginError').style.display = "block";
+            }
+        }
+
+        function showAdmin() {
+            document.getElementById('loginSection').style.display = "none";
+            document.getElementById('adminContent').style.display = "block";
+        }
+
+        function logout() {
+            sessionStorage.removeItem("isLoggedIn");
+            location.reload();
+        }
+
+        // Kiểm tra trạng thái đã đăng nhập chưa khi load trang
+        if (sessionStorage.getItem("isLoggedIn") === "true") {
+            showAdmin();
+        }
+
+        // 2. Xử lý Gửi dữ liệu (Giữ nguyên logic của bạn)
+        document.getElementById('adminForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const status = document.getElementById('status');
+            
+            btn.innerText = "Đang xử lý...";
+            btn.disabled = true;
+
+            const data = {
+                id: document.getElementById('id').value,
+                name: document.getElementById('name').value,
+                price: document.getElementById('price').value,
+                category: document.getElementById('category').value,
+                img: document.getElementById('img').value,
+                desc: document.getElementById('desc').value
+            };
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify(data)
+            })
+            .then(res => res.json())
+            .then(result => {
+                if(result.result === "success") {
+                    status.innerHTML = "<span style='color: green;'>✅ Đã thêm thành công!</span>";
+                    document.getElementById('adminForm').reset();
+                } else {
+                    status.innerHTML = "<span style='color: red;'>❌ Lỗi: " + result.message + "</span>";
+                }
+            })
+            .catch(err => {
+                status.innerHTML = "<span style='color: red;'>❌ Lỗi kết nối server!</span>";
+            })
+            .finally(() => {
+                btn.innerText = "Lưu Vào Cửa Hàng";
+                btn.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
