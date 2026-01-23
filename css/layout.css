@@ -158,7 +158,6 @@ body {
 
 .footer-grid {
     display: grid;
-    /* Sử dụng Grid thay cho Flex để kiểm soát cột trên mobile tốt hơn */
     grid-template-columns: 1.5fr 1fr; 
     gap: 40px;
     align-items: start;
@@ -187,7 +186,6 @@ body {
     line-height: 1.4;
 }
 
-/* Fix màu số điện thoại */
 .contact-list a {
     color: inherit !important;
     text-decoration: none !important;
@@ -211,7 +209,7 @@ body {
 }
 
 .footer-products li {
-    margin-bottom: 10px !important; /* Khoảng cách dòng sản phẩm tiêu biểu */
+    margin-bottom: 10px !important;
 }
 
 .footer-products a {
@@ -251,17 +249,21 @@ body {
 
     .nav a { font-size: 0.85rem; }
 
-    /* Fix Footer Mobile: Chia tỷ lệ thông minh để không vỡ dòng địa chỉ */
+    /* Fix Footer Mobile: Chuyển về 1 cột để chữ không bị nhảy hàng */
     .footer-grid {
-        grid-template-columns: 1.4fr 1fr !important; 
-        gap: 10px !important;
+        grid-template-columns: 1fr !important; /* Buộc 1 cột để lấy hết chiều ngang */
+        gap: 30px !important;
     }
 
-    .footer-logo { font-size: 1.3rem; margin-bottom: 12px; }
-    .footer-heading { font-size: 1rem !important; margin-bottom: 15px; letter-spacing: 0; }
+    .footer-products {
+        text-align: left !important; /* Căn trái toàn bộ cho đồng nhất trên mobile */
+    }
+
+    .footer-logo { font-size: 1.5rem; margin-bottom: 12px; }
+    .footer-heading { font-size: 1.3rem !important; margin-bottom: 15px; }
     
-    .contact-list li { font-size: 0.8rem; margin-bottom: 10px; }
-    .footer-products a { font-size: 0.85rem; }
+    .contact-list li { font-size: 0.9rem; margin-bottom: 10px; }
+    .footer-products a { font-size: 1rem; }
     .footer-products li { margin-bottom: 8px !important; }
 
     .news-grid { grid-template-columns: 1fr; padding: 20px 10px; }
@@ -269,12 +271,7 @@ body {
     .news-content { padding: 20px; }
 }
 
-/* Tối ưu cho màn hình cực nhỏ (iPhone SE) */
 @media (max-width: 380px) {
-    .footer-grid {
-        grid-template-columns: 1.5fr 1fr !important;
-        gap: 5px !important;
-    }
-    .footer-logo { font-size: 1.1rem; }
-    .footer-heading { font-size: 0.9rem !important; }
+    .footer-logo { font-size: 1.3rem; }
+    .footer-heading { font-size: 1.1rem !important; }
 }
