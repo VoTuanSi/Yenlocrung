@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tin tức & Chia sẻ | Yến Lộc Rừng</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS riêng cho trang Tin tức */
+        .news-header {
+            text-align: center;
+            padding: 60px 0;
+            background: #f9fbf9;
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px 0;
+        }
+        .news-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+        .news-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .news-content {
+            padding: 20px;
+        }
+        .news-date {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .news-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        .news-excerpt {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .btn-readmore {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">YẾN LỘC RỪNG</div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="gioithieu.html">Giới thiệu</a></li>
+                    <li><a href="sanpham.html">Sản phẩm</a></li>
+                    <li><a href="chungnhan.html">Chứng nhận</a></li>
+                    <li><a href="tintuc.html" class="active">Tin tức</a></li>
+                    <li><a href="lienhe.html">Liên hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="news-header">
+            <h1>Tin tức & Chia sẻ</h1>
+            <p>Cập nhật những hoạt động mới nhất và kiến thức chăm sóc sức khỏe</p>
+        </section>
+
+        <div class="news-grid">
+            <article class="news-card">
+                <img src="images/tintuc1.jpg" alt="Giải thưởng OCOP" class="news-image">
+                <div class="news-content">
+                    <span class="news-date">20/09/2024</span>
+                    <h2 class="news-title">Yến Lộc Rừng đạt giải nhất cuộc thi khởi nghiệp sáng tạo</h2>
+                    <p class="news-excerpt">Dự án nâng cao năng lực sản xuất và thúc đẩy thương mại hóa các sản phẩm có lợi cho sức khỏe...</p>
+                    <a href="#" class="btn-readmore">Xem chi tiết →</a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <img src="images/tintuc2.jpg" alt="Sương sâm" class="news-image">
+                <div class="news-content">
+                    <span class="news-date">15/08/2024</span>
+                    <h2 class="news-title">Công dụng tuyệt vời của bột sương sâm đối với cơ thể</h2>
+                    <p class="news-excerpt">Sương sâm không chỉ là món giải khát mà còn là vị thuốc quý giúp thanh nhiệt, giải độc hiệu quả...</p>
+                    <a href="#" class="btn-readmore">Xem chi tiết →</a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <img src="images/tintuc3.jpg" alt="Quy trình sản xuất" class="news-image">
+                <div class="news-content">
+                    <span class="news-date">10/08/2024</span>
+                    <h2 class="news-title">Quy trình sản xuất Bột đậu ngũ hành chuẩn sạch</h2>
+                    <p class="news-excerpt">Tìm hiểu quy trình từ khâu chọn hạt đến khâu rang xay đóng gói để giữ trọn vẹn dinh dưỡng...</p>
+                    <a href="#" class="btn-readmore">Xem chi tiết →</a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-flex">
+                <div class="footer-column info-col">
+                    <div class="footer-logo">YẾN LỘC RỪNG</div>
+                    <p><strong>Địa chỉ:</strong> Tổ 7A, ấp 6, Thanh Sơn, Định Quán, Đồng Nai</p>
+                    <p><strong>Hotline:</strong> 0979 502 951</p>
+                    <p><strong>Facebook:</strong> Yến Lộc Rừng</p>
+                </div>
+                <div class="footer-column products-col">
+                    <h3 class="footer-heading">Sản phẩm tiêu biểu</h3>
+                    <ul class="footer-links">
+                        <li><a href="sanpham.html">Bột đậu ngũ hành</a></li>
+                        <li><a href="sanpham.html">Bột sương sâm</a></li>
+                        <li><a href="sanpham.html">Hà thủ ô đỏ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>© 2024 Yến Lộc Rừng. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

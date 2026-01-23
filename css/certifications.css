@@ -5,7 +5,7 @@
 
 .certifications h2 {
     color: var(--primary-color);
-    font-size: 2rem;
+    font-size: clamp(1.8rem, 4.5vw, 2.4rem); /* To hơn, fluid */
     text-align: center;
     margin-bottom: 50px;
 }
@@ -40,37 +40,38 @@
 
 .cert-detailed-item h3 {
     color: var(--primary-color);
-    font-size: 1.2rem;
+    font-size: clamp(1.3rem, 3.2vw, 1.6rem); /* To hơn */
     margin-bottom: 10px;
     font-weight: 600;
 }
 
 .cert-detailed-item p {
     color: var(--text-light);
-    font-size: 0.9rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem); /* To hơn */
     line-height: 1.6;
 }
 
 /* Certification Grid */
 .cert-grid {
-display: grid;
+    display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 25px;
     align-items: start; /* Giúp các ảnh đứng cạnh nhau không bị kéo dãn */
 }
 
 .cert-item {
-   background: #ffffff;
-    padding: 10px;
+    background: #ffffff;
+    padding: 15px; /* Tăng padding cho dễ đọc */
     border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* Bóng đổ sâu hơn */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     border: 1px solid #eef2ed;
     display: flex;
     flex-direction: column;
 }
+
 .cert-img-wrapper {
     width: 100%;
-    height: auto; /* Để chiều cao tự động theo ảnh */
+    height: auto;
     max-height: none; 
     overflow: hidden;
     border-radius: 4px;
@@ -86,17 +87,17 @@ display: grid;
     transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-
 .cert-item p {
     margin-top: 15px;
-    font-size: 0.95rem;
-    line-height: 1.4;
+    font-size: clamp(1.1rem, 2.8vw, 1.3rem); /* To hơn rõ rệt */
+    line-height: 1.5;
     font-weight: 600;
     color: #2d5a27;
     text-align: center;
-    padding: 0 5px;
-    min-height: auto; /* Bỏ min-height để không thừa khoảng trống */
+    padding: 0 10px;
+    min-height: auto;
 }
+
 .cert-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 45px rgba(45, 90, 39, 0.15);
@@ -105,6 +106,7 @@ display: grid;
 .cert-item:hover img {
     transform: scale(1.03);
 }
+
 /* Certifications Preview */
 .certifications-preview {
     margin-top: 60px;
@@ -114,7 +116,7 @@ display: grid;
     color: var(--primary-color);
     text-align: center;
     margin-bottom: 50px;
-    font-size: 2rem;
+    font-size: clamp(1.8rem, 4.5vw, 2.4rem);
 }
 
 .cert-feature-grid {
@@ -125,7 +127,7 @@ display: grid;
 
 .cert-feature-col h3 {
     color: var(--primary-color);
-    font-size: 1.4rem;
+    font-size: clamp(1.4rem, 3.5vw, 1.7rem);
     margin-bottom: 30px;
     text-align: center;
 }
@@ -161,9 +163,10 @@ display: grid;
 .cert-preview-item p {
     color: var(--primary-color);
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: clamp(1.1rem, 2.8vw, 1.3rem);
     margin: 0;
 }
+
 /* Trang trí nền cho bớt trống */
 .bg-glow {
     position: fixed;
@@ -176,7 +179,7 @@ display: grid;
 }
 
 .page-title {
-   font-size: 2rem; /* Giảm từ 2.8rem xuống 2rem */
+    font-size: clamp(2.4rem, 6vw, 3.2rem); /* To hơn */
     font-weight: 600;
     letter-spacing: -0.5px;
     margin-bottom: 15px;
@@ -189,17 +192,20 @@ display: grid;
     line-height: 1.8;
     color: var(--text-light);
     font-style: italic;
+    font-size: clamp(1.3rem, 3.5vw, 1.6rem); /* To hơn */
 }
 
 .section-badge {
-   font-size: 0.85rem; /* Thu nhỏ đáng kể */
+    font-size: clamp(1rem, 2.5vw, 1.3rem); /* To hơn */
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1.5px; /* Tăng khoảng cách chữ tạo cảm giác thoáng */
+    letter-spacing: 1.5px;
     padding: 6px 20px;
-    background: rgba(45, 90, 39, 0.05); /* Màu nền nhạt hơn nữa */
+    background: rgba(45, 90, 39, 0.05);
     border-left: 3px solid var(--primary-color);
+    display: inline-block;
 }
+
 .certifications {
     margin-bottom: 80px;
 }
@@ -218,7 +224,7 @@ display: grid;
 
 .cert-item {
     background: white;
-    padding: 15px;
+    padding: 20px; /* Tăng padding cho dễ đọc */
     border-radius: 20px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.05);
     transition: all 0.4s ease;
@@ -232,17 +238,21 @@ display: grid;
 
 .cert-img-wrapper {
     width: 100%;
-    height: 380px; /* Tăng chiều cao để nhìn rõ văn bản */
+    height: clamp(320px, 55vw, 420px); /* Tăng chiều cao linh hoạt */
     overflow: hidden;
     border-radius: 12px;
     background: #f9f9f9;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
 }
 
 .cert-img-wrapper img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Để nguyên form giấy khen/giấy chứng nhận */
+    object-fit: contain;
     padding: 10px;
     transition: transform 0.6s ease;
 }
@@ -254,7 +264,7 @@ display: grid;
 .cert-item p {
     font-weight: 600;
     color: var(--primary-color);
-    font-size: 1rem;
+    font-size: clamp(1.1rem, 2.8vw, 1.4rem); /* To hơn */
     padding: 0 10px 10px;
     min-height: 3em;
     display: flex;
@@ -265,84 +275,96 @@ display: grid;
 /* Cam kết minh bạch - Glassmorphism */
 .transparency-card {
     background: linear-gradient(135deg, rgba(45, 90, 39, 0.03), rgba(212, 163, 115, 0.03));
-    padding: 50px;
+    padding: clamp(3rem, 6vw, 5rem);
     border-radius: 30px;
     text-align: center;
     border: 1px dashed var(--primary-color);
     margin: 100px 0;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .transparency-card h2 {
     color: var(--primary-color);
     margin-bottom: 20px;
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
 }
+
+.transparency-card p {
+    font-size: clamp(1.3rem, 3.5vw, 1.6rem);
+    line-height: 1.8;
+}
+
 .header .logo {
-    font-size: 1.5rem; /* Giảm size logo */
+    font-size: 1.5rem; /* Giữ nguyên gốc */
     font-weight: 700;
-    letter-spacing: 1px; /* Tăng khoảng cách chữ cho sang */
+    letter-spacing: 1px;
 }
 
 .nav ul li a {
-    font-size: 0.9rem; /* Chữ menu nhỏ lại */
+    font-size: 0.9rem; /* Giữ nguyên gốc */
     font-weight: 500;
-    text-transform: uppercase; /* Viết hoa nhẹ nhàng */
+    text-transform: uppercase;
     letter-spacing: 0.5px;
 }
+
+/* ==================== RESPONSIVE ==================== */
 @media (max-width: 1024px) {
     .container {
         padding: 0 20px;
     }
     
     .page-title {
-        font-size: 1.8rem; /* Thu nhỏ tiêu đề chính một chút */
+        font-size: clamp(2rem, 5.5vw, 2.8rem);
     }
 
     .cert-grid {
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Giảm độ rộng tối thiểu để vừa màn hình nhỏ hơn */
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         gap: 25px;
     }
 
     .cert-img-wrapper {
-        height: 320px; /* Giảm chiều cao ảnh để cân đối */
+        height: 320px;
     }
 }
 
-/* 2. Cho màn hình Điện thoại lớn (Dưới 768px) */
+/* Điện thoại lớn (≤ 768px) */
 @media (max-width: 768px) {
     .header .container {
-        flex-direction: column; /* Xếp logo và menu dọc */
+        flex-direction: column;
         gap: 15px;
         text-align: center;
     }
 
     .nav ul {
         display: flex;
-        flex-wrap: wrap; /* Cho phép menu nhảy dòng nếu quá dài */
+        flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
     }
 
     .page-title {
-        font-size: 1.5rem;
+        font-size: clamp(1.8rem, 6vw, 2.4rem);
         margin-top: 30px;
     }
 
     .legal-intro {
-        font-size: 0.85rem;
+        font-size: clamp(1rem, 3vw, 1.3rem);
         margin-bottom: 40px;
     }
 
     .cert-grid {
-        grid-template-columns: repeat(2, 1fr); /* Hiện 2 ảnh trên 1 hàng cho điện thoại ngang */
+        grid-template-columns: repeat(2, 1fr);
         gap: 15px;
     }
 
     .cert-img-wrapper {
-        height: 250px; /* Thu nhỏ ảnh thêm */
+        height: clamp(250px, 50vw, 320px);
     }
 
     .section-badge {
-        font-size: 0.75rem; /* Chữ Badge nhỏ lại nữa cho cân đối */
+        font-size: clamp(0.9rem, 2.2vw, 1.1rem);
         padding: 5px 15px;
     }
 
@@ -352,23 +374,23 @@ display: grid;
     }
 }
 
-/* 3. Cho màn hình Điện thoại nhỏ (Dưới 480px) */
+/* Điện thoại nhỏ (≤ 480px) */
 @media (max-width: 480px) {
     .cert-grid {
-        grid-template-columns: 1fr; /* Hiện 1 ảnh duy nhất trên 1 hàng để nhìn rõ nhất */
+        grid-template-columns: 1fr;
     }
 
     .cert-img-wrapper {
-        height: auto; /* Để chiều cao tự động theo ảnh thật */
+        height: auto;
         max-height: 400px;
     }
 
     .cert-item p {
-        font-size: 0.8rem; /* Chữ mô tả nhỏ lại để không bị chiếm chỗ */
+        font-size: clamp(1rem, 3vw, 1.2rem);
         min-height: auto;
     }
 
     .bg-glow {
-        display: none; /* Ẩn các hiệu ứng nền cầu kỳ trên điện thoại để máy load nhanh hơn */
+        display: none;
     }
 }

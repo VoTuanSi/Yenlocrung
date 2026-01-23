@@ -15,20 +15,21 @@
 }
 
 .logo {
-    font-size: 1.8rem;
+    font-size: clamp(2rem, 5vw, 2.8rem);
     font-weight: 700;
     color: var(--primary-color);
+    letter-spacing: 1px;
 }
 
 @media (max-width: 768px) {
     .logo {
-        font-size: 1.5rem;
+        font-size: clamp(1.8rem, 6vw, 2.4rem);
     }
 }
 
 @media (max-width: 640px) {
     .logo {
-        font-size: 1.3rem;
+        font-size: clamp(1.6rem, 5.5vw, 2.2rem);
     }
 }
 
@@ -47,14 +48,16 @@
 @media (max-width: 768px) {
     .nav ul {
         gap: 15px;
-        font-size: 0.9rem;
+        font-size: clamp(1rem, 3vw, 1.2rem);
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
 
 @media (max-width: 640px) {
     .nav ul {
         gap: 10px;
-        font-size: 0.8rem;
+        font-size: clamp(0.95rem, 2.8vw, 1.1rem);
     }
 }
 
@@ -63,6 +66,7 @@
     color: var(--text-color);
     font-weight: 600;
     transition: color 0.3s;
+    font-size: clamp(1.1rem, 2.8vw, 1.3rem);
 }
 
 .nav a:hover,
@@ -82,15 +86,16 @@ footer {
 footer p {
     margin: 0;
 }
+
 /* Header thanh mảnh - Dùng cho mọi trang */
 .header .logo {
-    font-size: 1.5rem; 
+    font-size: clamp(1.8rem, 4.5vw, 2.4rem); 
     font-weight: 700;
     letter-spacing: 1px;
 }
 
 .nav ul li a {
-    font-size: 0.9rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -98,12 +103,13 @@ footer p {
 
 /* Tiêu đề trang chung */
 .page-title {
-    font-size: 2rem;
+    font-size: clamp(2.4rem, 6vw, 3.2rem);
     font-weight: 600;
     letter-spacing: -0.5px;
     margin-bottom: 15px;
-    text-align:left; /* Đảm bảo luôn căn giữa */
+    text-align: center;
 }
+
 .main-footer {
     background: #fdfdfd;
     padding: 60px 0 30px;
@@ -124,7 +130,7 @@ footer p {
 }
 
 .footer-logo {
-    font-size: 1.6rem;
+    font-size: clamp(1.8rem, 4.5vw, 2.2rem);
     font-weight: 700;
     color: var(--primary-color);
     margin-bottom: 20px;
@@ -132,14 +138,15 @@ footer p {
 
 .footer-column p {
     margin-bottom: 10px;
-    font-size: 0.95rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
 }
 
 .footer-heading {
-    font-size: 1.15rem;
+    font-size: clamp(1.3rem, 3.5vw, 1.6rem);
     color: var(--primary-color);
     margin-bottom: 20px;
     font-weight: 700;
+    text-align: left; /* Đảm bảo tiêu đề căn trái */
 }
 
 .footer-products-grid {
@@ -173,7 +180,7 @@ footer p {
     padding-top: 25px;
     border-top: 1px solid #eee;
     text-align: left;
-    font-size: 0.9rem;
+    font-size: clamp(0.95rem, 2.2vw, 1.1rem);
     color: #777;
 }
 
@@ -198,7 +205,7 @@ footer p {
 
 .contact-list li {
     margin-bottom: 10px;
-    font-size: 0.95rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
 }
 
 .contact-list a {
@@ -211,30 +218,38 @@ footer p {
     text-decoration: underline;
 }
 
-/* Sản phẩm tiêu biểu – footer */
+/* Sản phẩm tiêu biểu – footer (đã sửa để không thụt vào) */
+.footer-products {
+    text-align: left; /* Căn trái toàn bộ */
+}
+
 .footer-products .footer-heading {
     margin-bottom: 14px;
-    font-size: 1.1rem;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
     letter-spacing: 0.3px;
+    text-align: left; /* Tiêu đề căn trái */
+    padding-left: 0;
 }
 
 .footer-products ul {
     list-style: none;
-    padding: 0;
+    padding: 0;          /* Bỏ padding-left mặc định */
     margin: 0;
+    text-align: left;
 }
 
 .footer-products li {
     margin-bottom: 12px;
-    padding-left: 0;
+    padding-left: 0;     /* Quan trọng: Bỏ thụt trái */
 }
 
 .footer-products a {
     color: #555;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     font-weight: 500;
     transition: color 0.2s ease;
+    display: block;      /* Link full width, dễ chạm */
 }
 
 .footer-products a:hover {
@@ -251,5 +266,35 @@ footer p {
     .footer-flex { flex-direction: column; text-align: center; }
     .footer-column { text-align: center; }
     .footer-products-grid { grid-template-columns: repeat(2, 1fr); }
-    .footer-grid { flex-direction: column; text-align: left; }
+    .footer-grid { flex-direction: column; text-align: center; }
+    .footer-grid .footer-info,
+    .footer-grid .footer-products {
+        text-align: center;
+    }
+
+    /* Sửa footer-products trên mobile */
+    .footer-products {
+        text-align: center;
+    }
+    .footer-products .footer-heading,
+    .footer-products ul,
+    .footer-products li,
+    .footer-products a {
+        text-align: center;
+        padding-left: 0;
+    }
+}
+
+/* Thêm media query để header responsive tốt hơn trên mobile */
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }

@@ -19,6 +19,13 @@
     box-sizing: border-box;
 }
 
+/* Thêm để chữ không bị zoom tự động nhỏ trên mobile + tăng font base */
+html {
+    font-size: 62.5%; /* 1rem = 10px */
+    text-size-adjust: none;          /* Giải pháp mạnh nhất: tắt zoom tự động chữ */
+    -webkit-text-size-adjust: none;
+}
+
 body {
     font-family: 'Quicksand', sans-serif;
     background-color: var(--bg-color);
@@ -28,9 +35,11 @@ body {
     background-size: 50px 50px;
     background-position: 0 0, 25px 25px;
     color: var(--text-color);
-    line-height: 1.6;
+    line-height: 1.8; /* Tăng khoảng cách dòng cho dễ đọc hơn */
+    font-size: clamp(1.8rem, 4.5vw, 2.2rem); /* Chữ base TO HƠN, tự điều chỉnh theo màn hình */
 }
 
+/* ==================== CONTAINER ==================== */
 .container {
     width: 90%;
     max-width: 1400px;
@@ -103,9 +112,10 @@ body {
     }
 }
 
+/* ==================== PAGE TITLE ==================== */
 .page-title {
     text-align: center;
-    font-size: 3rem;
+    font-size: clamp(2.8rem, 7vw, 4rem); /* To hơn, fluid theo màn hình */
     color: var(--primary-color);
     margin: 60px 0 40px;
     font-weight: 700;
@@ -113,7 +123,7 @@ body {
 
 @media (max-width: 768px) {
     .page-title {
-        font-size: 2rem;
+        font-size: clamp(2.2rem, 6vw, 3rem); /* To hơn trên mobile */
     }
 }
 
@@ -125,7 +135,7 @@ body {
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: clamp(1.3rem, 3.5vw, 1.6rem); /* Chữ nút to hơn */
     transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(45, 90, 39, 0.3);
     display: inline-block;
@@ -140,13 +150,13 @@ body {
 @media (max-width: 768px) {
     .btn-primary {
         padding: 14px 40px;
-        font-size: 1.1rem;
+        font-size: clamp(1.2rem, 3.2vw, 1.5rem);
     }
 }
 
 @media (max-width: 640px) {
     .btn-primary {
         padding: 12px 30px;
-        font-size: 1rem;
+        font-size: clamp(1.1rem, 3vw, 1.4rem);
     }
 }

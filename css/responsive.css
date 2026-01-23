@@ -1,26 +1,180 @@
 /* ==================== RESPONSIVE ==================== */
-@media (max-width: 992px) {
-    .intro-grid {
-        flex-direction: column;
-    }
+
+/* ==================== COMBO 1 — AUTO TEXT ADJUST ==================== */
+html {
+    -webkit-text-size-adjust: none;  /* Tắt zoom tự động chữ trên mobile */
+    text-size-adjust: none;
 }
 
-@media (max-width: 768px) {
-    .nav-links {
-        gap: 25px;
-        font-size: 0.85rem;
+/* ==================== COMBO 2 — FLUID FONT SIZE ==================== */
+.intro-hero-left h1 {
+    font-size: clamp(2rem, 6vw, 3.2rem); /* To hơn, fluid */
+    line-height: 1.3;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/* ≤ 480px */
+@media (max-width: 480px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 36px !important;
+        height: 36px !important;
+    }
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+        font-size: 0.9rem !important;
     }
 
-    .hero h1 {
-        font-size: 2.2rem;
-    }
-
-    .hero p {
-        font-size: 1.1rem;
+    body {
+        font-size: clamp(1.6rem, 4.5vw, 1.9rem); /* Chữ base to hơn trên mobile nhỏ */
     }
 
     .page-title {
-        font-size: 2rem;
+        font-size: clamp(2rem, 6vw, 2.8rem);
+    }
+
+    .legal-intro,
+    .cert-item p,
+    .transparency-card p {
+        font-size: clamp(1.1rem, 3.2vw, 1.4rem);
+    }
+
+    .section-badge {
+        font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+    }
+
+    .cert-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .cert-img-wrapper {
+        height: auto;
+        max-height: 420px;
+    }
+}
+
+/* ≤ 576px — MOBILE */
+@media (max-width: 576px) {
+    .container {
+        width: 100%;
+        padding: 0 16px;
+    }
+
+    /* HEADER */
+    .header .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .nav ul {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .nav ul li a,
+    .footer-products ul li a {
+        font-size: clamp(1.1rem, 3.2vw, 1.3rem); /* Chữ menu to hơn */
+    }
+
+    /* PAGE TITLE */
+    .page-title {
+        font-size: clamp(2.2rem, 6.5vw, 3rem);
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    /* TEXT */
+    .legal-intro,
+    .intro-hero-left p {
+        font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+        line-height: 1.7;
+        text-align: justify;
+    }
+
+    .intro-hero-left h1 {
+        font-size: clamp(1.8rem, 6vw, 2.8rem);
+        line-height: 1.3;
+    }
+
+    /* HERO */
+    .intro-hero-content {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+
+    .intro-hero-right img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .btn-primary {
+        margin-top: 20px;
+        font-size: clamp(1.2rem, 3.5vw, 1.4rem);
+        padding: 12px 25px;
+    }
+
+    /* GRID SECTIONS */
+    .philosophy-grid,
+    .cert-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        margin-top: 25px;
+    }
+
+    .cert-item p {
+        font-size: clamp(1.1rem, 3.2vw, 1.4rem);
+    }
+
+    /* TRANSPARENCY */
+    .transparency-card {
+        padding: 25px 20px;
+        margin-top: 40px;
+    }
+
+    /* FOOTER */
+    .footer-grid {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-logo {
+        font-size: clamp(1.8rem, 5vw, 2.2rem);
+    }
+
+    .contact-list li,
+    .footer-products ul li {
+        font-size: clamp(1.1rem, 3.2vw, 1.3rem);
+    }
+
+    .footer-heading {
+        font-size: clamp(1.3rem, 3.8vw, 1.6rem);
+    }
+}
+
+/* ≤ 768px — TABLET NHỎ */
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 25px;
+        font-size: clamp(1rem, 3vw, 1.2rem);
+    }
+
+    .hero h1 {
+        font-size: clamp(2.2rem, 6vw, 3rem);
+    }
+
+    .hero p {
+        font-size: clamp(1.1rem, 3.2vw, 1.4rem);
+    }
+
+    .page-title {
+        font-size: clamp(2.2rem, 6vw, 3rem);
     }
 
     .featured-grid {
@@ -41,16 +195,91 @@
     .cert-feature-grid {
         gap: 30px;
     }
+
+    .cert-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .cert-img-wrapper {
+        height: clamp(280px, 50vw, 360px);
+    }
 }
 
-@media (max-width: 480px) {
-    .swiper-button-next,
-    .swiper-button-prev {
-        width: 36px !important;
-        height: 36px !important;
+/* 577px – 992px — TABLET */
+@media (min-width: 577px) and (max-width: 992px) {
+    .container {
+        width: 90%;
     }
-    .swiper-button-next::after,
-    .swiper-button-prev::after {
-        font-size: 0.9rem !important;
+
+    .nav ul {
+        gap: 20px;
     }
+
+    .page-title {
+        font-size: clamp(2.6rem, 6.5vw, 3.4rem);
+    }
+
+    .intro-hero-content {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .intro-hero-left h1 {
+        font-size: clamp(2.4rem, 6vw, 3.2rem);
+    }
+
+    .intro-hero-left p {
+        font-size: clamp(1.3rem, 3.5vw, 1.6rem);
+    }
+
+    .carousel-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .philosophy-grid,
+    .cert-grid,
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+/* 993px – 1200px — LAPTOP NHỎ */
+@media (min-width: 993px) and (max-width: 1200px) {
+    .container {
+        width: 85%;
+    }
+
+    .carousel-grid-container {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 25px;
+    }
+
+    .philosophy-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .cert-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}
+
+/* ≤ 992px — INTRO GRID */
+@media (max-width: 992px) {
+    .intro-grid {
+        flex-direction: column;
+    }
+}
+
+/* FOOTER DEFAULT */
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    align-items: start;
 }
