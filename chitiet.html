@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="css/certifications.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/news.css">
+    <link rel="stylesheet" href="css/chitiet.css">
+    
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -22,22 +24,29 @@
                     <li><a href="sanpham.html">Sản phẩm</a></li>
                     <li><a href="chungnhanphaply.html">Chứng nhận & Pháp lý</a></li>
                     <li><a href="lienhe.html">Liên hệ</a></li>
-                    <li><a href="tintuc.html" class="active">Tin tức</a></li>
+                    <li><a href="tintuc.html">Tin tức</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="container news-section">
-        <h1 class="page-title">Tin tức & Chia sẻ</h1>
-        <p class="section-badge">Cập nhật hoạt động và kiến thức sống khỏe</p>
 
-        <div class="news-grid" id="news-container">
-            <p style="text-align:center; padding: 100px 0;">Đang tải tin tức...</p>
+    <main class="container article-detail">
+        <button class="back-btn" onclick="location.href='tintuc.html'">← </button>
+        
+        <h1 id="articleTitle">Đang tải bài viết...</h1>
+        <p class="article-date" id="articleDate"></p>
+        
+        <img id="articleImage" src="" alt="Ảnh bài viết" style="display:none;">
+        
+        <div class="article-body" id="articleBody">
+            <p style="text-align:center; padding: 50px 0;">Đang lấy dữ liệu từ hệ thống...</p>
         </div>
+        
+        <a href="https://www.facebook.com/YenLocRung?mibextid=wwXIfr&rdid=wfUS61O6lzcpKZty&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1EtcfebfgA%2F%3Fmibextid%3DwwXIfr#" target="_blank" class="read-more">Theo dõi trên Fanpage</a>
     </main>
 
-<footer class="main-footer">
+ <footer class="main-footer">
     <div class="container">
         <div class="footer-grid">
             <div class="footer-info">
@@ -66,65 +75,58 @@
     <script>
         const SHEET_URL = 'https://script.google.com/macros/s/AKfycbw_3TQQo0qeqDrtGKGm4q8VdKGRXUb1VWUXAKYn0upwlp-iMKzOQWruAiuL8VMKQNL-/exec';
 
-        async function loadNews() {
-            const container = document.getElementById('news-container');
-            if (!container) return;
+        async function loadArticle() {
+            const params = new URLSearchParams(window.location.search);
+            const id = parseInt(params.get('id'));
+
+            if (isNaN(id) || id < 1) {
+                document.getElementById('articleBody').innerHTML = '<p style="color:red; text-align:center;">Lỗi: Không tìm thấy bài viết.</p>';
+                return;
+            }
 
             try {
                 const response = await fetch(SHEET_URL);
                 const data = await response.json();
 
-                if (!data || data.length === 0) {
-                    container.innerHTML = '<p style="text-align:center;">Chưa có tin tức nào.</p>';
+                // Lấy dữ liệu từ hàng tương ứng (ID hàng 1 = index 0 trong mảng)
+                const article = data[id - 1];
+
+                if (!article) {
+                    document.getElementById('articleBody').innerHTML = '<p style="text-align:center;">Bài viết không tồn tại.</p>';
                     return;
                 }
 
-                // Tạo một bản sao có chứa ID gốc trước khi reverse
-                const indexedData = data.map((row, index) => ({
-                    originalId: index + 1, // Hàng 1 trong Sheet là ID 1
-                    content: row
-                }));
+                // 1. Tiêu đề (Cột A)
+                document.getElementById('articleTitle').textContent = article[0] || 'Tiêu đề đang cập nhật';
 
-                indexedData.reverse(); // Tin mới nhất lên đầu
-                container.innerHTML = '';
+                // 2. Định dạng Ngày tháng (Cột B)
+                let dateDisplay = article[1] || 'Chưa rõ ngày';
+                if (dateDisplay.includes('T')) {
+                    const d = new Date(dateDisplay);
+                    dateDisplay = `${d.getDate().toString().padStart(2, '0')}/${(d.getMonth() + 1).toString().padStart(2, '0')}/${d.getFullYear()}`;
+                }
+                document.getElementById('articleDate').textContent = 'Ngày đăng: ' + dateDisplay;
 
-                indexedData.forEach(item => {
-                    const row = item.content;
-                    const id = item.originalId;
+                // 3. Hình ảnh (Cột D)
+                const imgElement = document.getElementById('articleImage');
+                if (article[3] && article[3].trim() !== "") {
+                    imgElement.src = article[3];
+                    imgElement.style.display = 'block';
+                }
 
-                    let formattedDate = row[1] || 'Chưa có ngày';
-                    if (formattedDate.includes('T')) {
-                        const dateObj = new Date(formattedDate);
-                        if (!isNaN(dateObj.getTime())) {
-                            formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()}`;
-                        }
-                    }
+                // 4. Nội dung chi tiết (Cột E)
+                const content = article[4] && article[4].trim() !== "" 
+                    ? article[4] 
+                    : '<p>Nội dung đang được cập nhật...</p>';
+                document.getElementById('articleBody').innerHTML = content;
 
-                    const html = `
-                        <div class="news-item">
-                            <div class="news-image">
-                                <img src="${row[3] || 'https://via.placeholder.com/800x400'}" alt="${row[0]}">
-                                <span class="news-category">TIN TỨC</span>
-                            </div>
-                            <div class="news-content">
-                                <h3 class="news-title">${row[0] || 'Tiêu đề bài viết'}</h3>
-                                <div class="news-meta">
-                                    <span class="news-date">${formattedDate}</span>
-                                </div>
-                                <p class="news-excerpt">${row[2] || 'Cập nhật kiến thức sống khỏe cùng Yến Lộc Rừng...'}</p>
-                                <a href="chitiet.html?id=${id}" class="news-read-more">XEM CHI TIẾT</a>
-                            </div>
-                        </div>
-                    `;
-                    container.insertAdjacentHTML('beforeend', html);
-                });
             } catch (error) {
                 console.error('Lỗi:', error);
-                container.innerHTML = '<p style="text-align:center; color:red;">Lỗi tải tin tức.</p>';
+                document.getElementById('articleBody').innerHTML = '<p style="color:red; text-align:center;">Lỗi kết nối dữ liệu.</p>';
             }
         }
 
-        document.addEventListener('DOMContentLoaded', loadNews);
+        document.addEventListener('DOMContentLoaded', loadArticle);
     </script>
 </body>
 </html>

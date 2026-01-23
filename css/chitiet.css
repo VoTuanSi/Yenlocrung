@@ -1,0 +1,119 @@
+/* ==================== TRANG CHI TIẾT NÂNG CẤP ==================== */
+
+.article-detail {
+    max-width: 800px; /* Thu hẹp độ rộng khung để dòng chữ không quá dài, mắt dễ đọc hơn */
+    margin: 60px auto;
+    padding: 0 25px;
+    font-family: 'Quicksand', sans-serif;
+    color: #2c3e50; /* Màu chữ xanh than đen nhìn sang và êm mắt hơn đen thuần */
+}
+
+/* Nút quay lại - Làm gọn nhẹ và tinh tế hơn */
+.back-btn {
+    background: transparent;
+    border: 1px solid #eee;
+    padding: 8px 18px;
+    border-radius: 8px;
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 40px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.back-btn:hover {
+    background: #f9f9f9;
+    border-color: #2d5a27;
+    color: #2d5a27;
+    transform: translateX(-3px);
+}
+
+/* Tiêu đề bài viết - To, đậm và đẳng cấp */
+#articleTitle {
+    font-size: 2.6rem;
+    color: #1a3a16;
+    line-height: 1.3;
+    margin-bottom: 15px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* Ngày đăng - Chỉnh mảnh lại */
+.article-date {
+    font-size: 1rem;
+    color: #999;
+    margin-bottom: 40px;
+    display: block;
+    font-style: italic;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 20px;
+}
+
+/* Hình ảnh đại diện - Bo góc hiện đại và bóng mờ nhẹ */
+#articleImage {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.1);
+    margin-bottom: 50px;
+}
+
+/* THÂN BÀI VIẾT - QUAN TRỌNG: Đã tăng size chữ và giãn dòng */
+.article-body {
+    font-size: 1.25rem; /* Tăng từ 1.2 lên 1.25 (khoảng 20px), rất dễ đọc */
+    line-height: 2;    /* Giãn dòng rộng ra để không bị rối mắt */
+    color: #3e4444;
+    text-align: justify;
+}
+
+/* Khoảng cách các đoạn văn */
+.article-body p {
+    margin-bottom: 30px; /* Tạo khoảng trống giữa các đoạn để mắt nghỉ */
+}
+
+/* Nút Fanpage - Nhỏ gọn nhưng chuyên nghiệp */
+.read-more {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 50px;
+    padding: 10px 22px;
+    background: #2d5a27;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: 1px solid #2d5a27;
+}
+
+.read-more:hover {
+    background: white;
+    color: #2d5a27;
+    box-shadow: 0 10px 20px rgba(45, 90, 39, 0.1);
+}
+
+/* Tối ưu cho điện thoại */
+@media (max-width: 768px) {
+    .article-detail {
+        margin: 30px auto;
+        padding: 0 20px;
+    }
+
+    #articleTitle {
+        font-size: 1.8rem;
+    }
+
+    .article-body {
+        font-size: 1.15rem; /* Trên mobile chữ vẫn phải đủ to */
+        line-height: 1.8;
+    }
+
+    #articleImage {
+        margin-bottom: 30px;
+        border-radius: 12px;
+    }
+}
