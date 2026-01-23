@@ -35,7 +35,6 @@
         0 0;
     background-attachment: fixed;
     position: relative;
-    animation: subtleShift 20s ease-in-out infinite;
 }
 
 .intro-grid {
@@ -90,7 +89,6 @@
         radial-gradient(circle at 70% 70%, rgba(45, 90, 39, 0.15) 0%, transparent 35%);
     border-radius: 20px;
     z-index: -1;
-    animation: floatingGlow 5s ease-in-out infinite;
 }
 
 @media (max-width: 768px) {
@@ -120,7 +118,6 @@
     border-radius: 20px;
     display: block;
     box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-    animation: floatingImage 4s ease-in-out infinite;
     position: relative;
 }
 
