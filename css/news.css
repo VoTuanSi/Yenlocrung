@@ -24,21 +24,18 @@
 /* News Grid - Tự động co giãn */
 .news-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
     padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .news-item {
     display: flex;
-    flex-direction: column; /* Luôn ưu tiên ảnh trên, nội dung dưới */
-    border-radius: 20px;
-    overflow: hidden;
+    flex-direction: column; /* Quan trọng: Ảnh trên, nội dung dưới */
     background: #fff;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    transition: all 0.4s ease;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     height: 100%;
 }
 
@@ -51,8 +48,7 @@
 .news-image {
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 10; /* Giữ tỉ lệ vàng cho ảnh bài viết */
-    overflow: hidden;
+    height: 200px;
 }
 
 .news-image img {
